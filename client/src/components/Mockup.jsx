@@ -25,7 +25,7 @@ const Mockup = () => {
         </p>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Link
-            href='#'
+            to='/portfolio'
             className='bg-[#F5E83D] text-[#492B7A] py-3 px-8 rounded-full inline-flex items-center space-x-2 font-bold text-lg hover:bg-[#ABC612] transition-colors'
           >
             <span>View Portfolio</span>
