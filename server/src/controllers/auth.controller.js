@@ -64,34 +64,32 @@ export const login = async (req, res) => {
     })
 
     res.cookie('token', token, {
-      httpOnly: process.env.NODE_ENV !== 'development',
-      secure: true,
+      httpOnly: true,
       sameSite: 'none',
+      secure: false,
     })
 
     res.json({
       id: userFound._id,
       username: userFound.username,
+      token,
     })
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }
 }
 
-export const verifyToken = async (req, res) => {
-  const { token } = req.cookies
-  if (!token) return res.send(false)
+export const verifyToken = (req, res, next) => {
+  const token = req.cookies.token
+  if (!token) {
+    return res.status(401).json({ message: 'No token provided' })
+  }
 
-  jwt.verify(token, SECRET_KEY, async (error, user) => {
-    if (error) return res.sendStatus(401)
-
-    const userFound = await User.findById(user.id)
-    if (!userFound) return res.sendStatus(401)
-
-    return res.json({
-      id: userFound._id,
-      username: userFound.username,
-      email: userFound.email,
-    })
+  jwt.verify(token, SECRET_KEY, (err, user) => {
+    if (err) {
+      return res.status(500).json({ message: 'Failed to authenticate token' })
+    }
+    req.user = user
+    next()
   })
 }
