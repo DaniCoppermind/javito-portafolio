@@ -1,1 +1,4 @@
 /borradores
+scripts
+node_modules
+.env
