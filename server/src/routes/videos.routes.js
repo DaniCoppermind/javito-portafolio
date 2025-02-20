@@ -12,12 +12,12 @@ const router = Router()
 
 router.get('/videos', getVideos)
 
-router.get('/videos/:id', auth, getVideo)
+router.get('/videos/:id', getVideo)
 
 router.post('/videos', auth, createVideo)
 
 router.delete('/videos/:id', auth, deleteVideo)
 
-router.put('/videos/:id', updateVideo)
+router.put('/videos/:id', auth, updateVideo)
 
 export default router
