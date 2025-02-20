@@ -1,23 +1,35 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+
 import Layout from './components/Layout';
+
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+import PortfolioPage from './pages/PortfolioPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import DashboardPage from './pages/DashboardPage';
+import VideoFormPage from './pages/VideoFormPage';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<h1>Homepage</h1>} />
-          <Route path="/portfolio" element={<h1>portfolio</h1>} />
-          <Route path="/about" element={<h1>about</h1>} />
-          <Route path="/contact" element={<h1>contact</h1>} />
+    <AuthProvider>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact-me" element={<ContactPage />} />
 
-          <Route path="/login" element={<h1>Login</h1>} />
-          <Route path="/dashboard" element={<h1>Dashboard</h1>} />
-          <Route path="/add-video" element={<h1>New Video</h1>} />
-          <Route path="/dashboard/:id" element={<h1>update video</h1>} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/add-video" element={<VideoFormPage />} />
+            <Route path="/dashboard/:id" element={<VideoFormPage />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

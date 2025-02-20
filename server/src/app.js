@@ -9,10 +9,14 @@ import videosRoutes from './routes/videos.routes.js'
 
 const app = express()
 
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+  })
+)
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
 
 app.use('/api', authRoutes)
 app.use('/api', dashboardRoutes)
