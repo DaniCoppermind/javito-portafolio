@@ -1,4 +1,4 @@
-/borradores
-scripts
 node_modules
+/borradores
 .env
+createUser.js
