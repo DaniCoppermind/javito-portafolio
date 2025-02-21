@@ -1,6 +1,5 @@
 import { createContext, useContext, useState } from 'react';
 import { createVideoRequest, getVideosRequest } from '../api/videos';
-import { getVideo } from '../../../server/src/controllers/videos.controller';
 
 const videoContext = createContext();
 

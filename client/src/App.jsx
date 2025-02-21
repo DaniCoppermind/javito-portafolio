@@ -13,12 +13,14 @@ import VideoFormPage from './pages/VideoFormPage';
 import { ProtectedRoute, ProtectedLoginRoute } from './routes';
 import VideosPage from './pages/VideosPage';
 import { VideoProvider } from './context/VideoContext';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <AuthProvider>
       <VideoProvider>
         <BrowserRouter>
+          <Navbar />
           <Layout>
             <Routes>
               {/* Rutas en inglés */}
