@@ -64,9 +64,9 @@ export const login = async (req, res) => {
     })
 
     res.cookie('token', token, {
-      httpOnly: true,
+      httpOnly: false,
       sameSite: 'none',
-      secure: false,
+      secure: true,
     })
 
     res.json({
@@ -79,18 +79,24 @@ export const login = async (req, res) => {
   }
 }
 
-export const verifyToken = (req, res, next) => {
+export const verifyToken = async (req, res) => {
   const token = req.cookies.token
   if (!token) {
     return res.status(401).json({ message: 'No token provided' })
   }
 
-  jwt.verify(token, SECRET_KEY, (err, user) => {
+  jwt.verify(token, SECRET_KEY, async (err, user) => {
     if (err) {
       return res.status(500).json({ message: 'Failed to authenticate token' })
     }
-    req.user = user
-    next()
+
+    const userFound = await User.findById(user.id)
+    if (!userFound) return res.sendStatus(401)
+
+    return res.json({
+      id: userFound._id,
+      username: userFound.username,
+    })
   })
 }
 

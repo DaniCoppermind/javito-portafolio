@@ -10,6 +10,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import DashboardPage from './pages/DashboardPage';
 import VideoFormPage from './pages/VideoFormPage';
+import { ProtectedRoute, ProtectedLoginRoute } from './routes';
 
 function App() {
   return (
@@ -22,10 +23,15 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact-me" element={<ContactPage />} />
 
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/add-video" element={<VideoFormPage />} />
-            <Route path="/dashboard/:id" element={<VideoFormPage />} />
+            <Route element={<ProtectedLoginRoute />}>
+              <Route path="/login" element={<LoginPage />} />
+            </Route>
+
+            <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/add-video" element={<VideoFormPage />} />
+              <Route path="/dashboard/:id" element={<VideoFormPage />} />
+            </Route>
           </Routes>
         </Layout>
       </BrowserRouter>
