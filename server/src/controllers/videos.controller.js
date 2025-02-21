@@ -11,10 +11,11 @@ export const getVideos = async (req, res) => {
 
 export const createVideo = async (req, res) => {
   try {
-    const { url, typeOfVideo } = req.body
+    const { url, typeOfVideo, language } = req.body
     const newVideo = new Video({
       url,
       typeOfVideo,
+      language,
     })
     await newVideo.save()
     res.json(newVideo)

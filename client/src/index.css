@@ -25,3 +25,22 @@ body {
   );
   color: white;
 }
+
+.video-container {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container.vertical .video {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.video-container.horizontal .video {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
