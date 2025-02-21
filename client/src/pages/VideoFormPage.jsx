@@ -1,7 +1,9 @@
-import React from 'react';
-
 function VideoFormPage() {
-  return <div>VideoFormPage</div>;
+  return (
+    <div>
+      <form></form>
+    </div>
+  );
 }
 
 export default VideoFormPage;

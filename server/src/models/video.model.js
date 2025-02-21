@@ -9,6 +9,11 @@ const videosSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  language: {
+    type: String,
+    required: true,
+    enum: ['en', 'es'],
+  },
 })
 
 export const Video = mongoose.model('Video', videosSchema)
