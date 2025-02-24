@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+
+/* @layer theme, base, components, utilities;
+@import "./theme.css" layer(theme);
+@import "./preflight.css" layer(base);
+@import "./utilities.css" layer(utilities); */
+
+@theme {
+  --color-primary-purple: #492b7a;
+  --color-primary-blue: #36348b;
+  --color-secondary-yellow: #f5e83d;
+  --color-secondary-green: #abc612;
+  --color-secondary-orange: #d15715;
+
+  --font-franklin: 'Libre Franklin', serif;
+}
+
+body {
+  margin: auto 50px;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-primary-purple),
+    var(--color-primary-blue)
+  );
+  color: white;
+}
+
+.video-container {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container.vertical .video {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.video-container.horizontal .video {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
