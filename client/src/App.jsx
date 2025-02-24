@@ -20,8 +20,8 @@ function App() {
     <AuthProvider>
       <VideoProvider>
         <BrowserRouter>
-          <Navbar />
           <Layout>
+            <Navbar />
             <Routes>
               {/* Rutas en inglés */}
               <Route path="/en" element={<HomePage />} />

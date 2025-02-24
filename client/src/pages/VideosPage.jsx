@@ -15,9 +15,9 @@ const VideosPage = () => {
       {videos.map(video => (
         <div key={video._id} className="video-wrapper">
           {video.typeOfVideo ? (
-            <HorizontalVideo url={video.url} />
+            <HorizontalVideo url={video.url} id={video._id} />
           ) : (
-            <VerticalVideo url={video.url} />
+            <VerticalVideo url={video.url} id={video._id} />
           )}
         </div>
       ))}

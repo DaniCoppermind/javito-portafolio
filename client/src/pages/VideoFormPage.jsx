@@ -1,14 +1,36 @@
 import { useForm } from 'react-hook-form';
 import { useVideo } from '../context/VideoContext';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function VideoFormPage() {
-  const { register, handleSubmit } = useForm();
-  const { createVideo } = useVideo();
+  const { register, handleSubmit, setValue } = useForm();
+  const { createVideo, getVideo, updateVideo } = useVideo();
+  const navigate = useNavigate();
+  const params = useParams();
+
+  useEffect(() => {
+    async function loadVideo() {
+      if (params.id) {
+        const video = await getVideo(params.id);
+        setValue('url', video.url);
+        setValue('typeOfVideo', video.typeOfVideo);
+        setValue('language', video.language);
+      }
+    }
+    loadVideo();
+  }, []);
 
   const onSubmit = data => {
     const updatedTypeOfVideo = JSON.parse(data.typeOfVideo);
     const updatedData = { ...data, typeOfVideo: updatedTypeOfVideo };
-    createVideo(updatedData);
+
+    if (params.id) {
+      updateVideo(params.id, updatedData);
+    } else {
+      createVideo(updatedData);
+    }
+    navigate('/videos');
   };
 
   return (
