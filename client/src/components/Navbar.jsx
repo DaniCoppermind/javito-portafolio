@@ -1,33 +1,35 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Cookies from 'js-cookie';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const { isAuthenticated, logout } = useAuth();
   const token = Cookies.get('loginSecure');
   const secretValue = import.meta.env.VITE_SECRET_KEY;
+  const location = useLocation();
 
   const handleClick = () => {
     logout();
   };
 
+  const currentLang = location.pathname.startsWith('/es') ? 'es' : 'en';
+
   return (
     <nav className="bg-primary-purple my-3 flex justify-between rounded-lg px-10 py-5">
       <h1 className="text-2xl font-bold">
-        <Link to="/en">Javito es gay</Link>
+        <Link to={`/${currentLang}`}>Javito</Link>
       </h1>
       <ul className="flex gap-x-2">
         <li>
-          <Link to="/en">Home</Link>
+          <Link to={`/${currentLang}/portfolio`}>{t('portfolio')}</Link>
         </li>
         <li>
-          <Link to="/en/portfolio">Portfolio</Link>
+          <Link to={`/${currentLang}/about`}>{t('about')}</Link>
         </li>
         <li>
-          <Link to="/en/about">About</Link>
-        </li>
-        <li>
-          <Link to="/en/contact-me">Contact</Link>
+          <Link to={`/${currentLang}/contact-me`}>{t('contact')}</Link>
         </li>
         {token === secretValue ? (
           isAuthenticated ? (
