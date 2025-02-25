@@ -5,9 +5,10 @@ const videosSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  typeOfVideo: {
-    type: Boolean,
+  orientation: {
+    type: String,
     required: true,
+    enum: ['horizontal', 'vertical'],
   },
   language: {
     type: String,

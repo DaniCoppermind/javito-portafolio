@@ -14,21 +14,18 @@ function VideoFormPage() {
       if (params.id) {
         const video = await getVideo(params.id);
         setValue('url', video.url);
-        setValue('typeOfVideo', video.typeOfVideo);
+        setValue('orientation', video.orientation);
         setValue('language', video.language);
       }
     }
     loadVideo();
-  }, []);
+  }, [params.id, getVideo, setValue]);
 
   const onSubmit = data => {
-    const updatedTypeOfVideo = JSON.parse(data.typeOfVideo);
-    const updatedData = { ...data, typeOfVideo: updatedTypeOfVideo };
-
     if (params.id) {
-      updateVideo(params.id, updatedData);
+      updateVideo(params.id, data);
     } else {
-      createVideo(updatedData);
+      createVideo(data);
     }
     navigate('/videos');
   };
@@ -49,11 +46,11 @@ function VideoFormPage() {
         </div>
         <div>
           <select
-            {...register('typeOfVideo', { required: true })}
+            {...register('orientation', { required: true })}
             className="my-2 w-full rounded-md bg-zinc-700 px-4 py-2 text-white"
           >
-            <option value="true">Horizontal</option>
-            <option value="false">Vertical</option>
+            <option value="horizontal">Horizontal</option>
+            <option value="vertical">Vertical</option>
           </select>
         </div>
         <div>
