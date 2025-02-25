@@ -17,6 +17,9 @@ export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const token = Cookies.get('loginSecure');
+  const secretValue = import.meta.env.VITE_SECRET_KEY;
+
   const signin = async user => {
     try {
       const res = await loginRequest(user);
@@ -60,6 +63,7 @@ export const AuthProvider = ({ children }) => {
       } catch (error) {
         setIsAuthenticated(false);
         setLoading(false);
+        console.error(error);
       }
     };
     checkLogin();
@@ -67,7 +71,16 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated, errors, signin, loading, logout }}
+      value={{
+        user,
+        isAuthenticated,
+        errors,
+        signin,
+        loading,
+        logout,
+        token,
+        secretValue,
+      }}
     >
       {children}
     </AuthContext.Provider>
