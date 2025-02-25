@@ -11,10 +11,10 @@ export const getVideos = async (req, res) => {
 
 export const createVideo = async (req, res) => {
   try {
-    const { url, typeOfVideo, language } = req.body
+    const { url, orientation, language } = req.body
     const newVideo = new Video({
       url,
-      typeOfVideo,
+      orientation,
       language,
     })
     await newVideo.save()
@@ -38,10 +38,10 @@ export const deleteVideo = async (req, res) => {
 
 export const updateVideo = async (req, res) => {
   try {
-    const { url, typeOfVideo } = req.body
+    const { url, orientation } = req.body
     const updatedVideo = await Video.findByIdAndUpdate(
       req.params.id,
-      { url, typeOfVideo },
+      { url, orientation },
       { new: true }
     )
     if (!updatedVideo)

@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "build:ui": "rimraf dist && cd ../client && npm run build && xcopy dist ..\\server\\dist /E /I /Y"
   },
   "keywords": [],
   "author": "Daniel García",
@@ -21,5 +22,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^3.1.9",
     "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "rimraf": "^6.0.1"
   }
 }
