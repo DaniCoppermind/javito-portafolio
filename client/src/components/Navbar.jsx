@@ -42,16 +42,20 @@ const Navbar = () => {
           className="flex items-center space-x-3"
           onClick={() => setSelected('')}
         >
-          <img src="/Logo.png" alt="Logo Portfolio" className="h-16" />
-          <motion.span
-            whileHover={{ scale: 1.05, color: '#F5E83D' }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl font-bold"
-          >
-            {t('portfolio')}
-          </motion.span>
+          <motion.img
+            src="/Logo.png"
+            alt="Logo Portfolio"
+            className="h-16"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ scale: 1.1, rotate: 10 }}
+            transition={{
+              duration: 0.4,
+              scale: { type: 'spring', visualDuration: 0.4, bounce: 0.5 },
+            }}
+          />
         </Link>
+        <span className="sr-only">Go to Homepage</span>
         <button
           onClick={toggleMenu}
           className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm hover:bg-gray-100 focus:ring-1 focus:outline-none md:hidden dark:text-gray-400"
