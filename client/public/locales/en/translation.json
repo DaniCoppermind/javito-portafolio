@@ -1,5 +1,12 @@
 {
-  "home": "Home Page",
+  "home": {
+    "title": {
+      "line1": "Test,",
+      "line2": "English Test"
+    },
+    "subtitle": "This a test in english for i18next",
+    "button": "View Portfolio"
+  },
   "portfolio": "Portfolio",
   "about": "About",
   "contact": "Contact"

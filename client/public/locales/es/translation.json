@@ -1,5 +1,12 @@
 {
-  "home": "Página Principal",
+  "home": {
+    "title": {
+      "line1": "Test,",
+      "line2": "Español Prueba"
+    },
+    "subtitle": "Esto es una prueba desde i18next",
+    "button": "Ver Portafolio"
+  },
   "portfolio": "Portafolio",
   "about": "Sobre mi",
   "contact": "Contactame"
