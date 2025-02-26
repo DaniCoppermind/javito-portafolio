@@ -5,7 +5,8 @@
       "line2": "Español Prueba"
     },
     "subtitle": "Esto es una prueba desde i18next",
-    "button": "Ver Portafolio"
+    "button": "Ver Portafolio",
+    "noVideos": "No hay videos"
   },
   "portfolio": "Portafolio",
   "about": "Sobre mi",

@@ -1,27 +1,29 @@
-import { useEffect } from 'react';
 import { useVideo } from '../context/VideoContext';
-import VerticalVideo from '../components/VerticalVideo';
-import HorizontalVideo from '../components/HorizontalVideo';
+import VideoDashboardCard from '../components/VideoDashboardCard';
 
 const VideosPage = () => {
-  const { getVideos, videos } = useVideo();
+  const { videos, isLoading, error } = useVideo();
 
-  useEffect(() => {
-    getVideos();
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading videos</div>;
 
   return (
     <div>
       {videos.map(video => (
-        <div key={video._id} className="video-wrapper">
-          {video.orientation === 'horizontal' ? (
-            <HorizontalVideo url={video.url} id={video._id} />
-          ) : (
-            <VerticalVideo url={video.url} id={video._id} />
-          )}
-        </div>
+        <VideoDashboardCard key={video._id} video={video} />
       ))}
     </div>
+    // <div>
+    //   {videos.map(video => (
+    //     <div key={video._id} className="video-wrapper">
+    //       {video.orientation === 'horizontal' ? (
+    //         <HorizontalVideo url={video.url} id={video._id} />
+    //       ) : (
+    //         <VerticalVideo url={video.url} id={video._id} />
+    //       )}
+    //     </div>
+    //   ))}
+    // </div>
   );
 };
 

@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   createVideoRequest,
-  getVideosRequest,
   deleteVideoRequest,
-  getVideoRequest,
+  getVideosRequest,
   updateVideoRequest,
 } from '../api/videos';
 
@@ -18,65 +18,49 @@ export const useVideo = () => {
 };
 
 export function VideoProvider({ children }) {
-  const [videos, setVideos] = useState([]);
+  const queryClient = useQueryClient();
 
-  const getVideos = async () => {
-    try {
-      const res = await getVideosRequest();
-      setVideos(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // GetVideos
+  const {
+    data: videos,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ['videos'],
+    queryFn: getVideosRequest,
+    select: res => res.data,
+  });
 
-  const createVideo = async video => {
-    try {
-      const res = await createVideoRequest(video);
-      setVideos([...videos, res.data]);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const createVideoMutation = useMutation({
+    mutationFn: createVideoRequest,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['videos']);
+    },
+  });
 
-  const deleteVideo = async id => {
-    try {
-      if (window.confirm('¿Deseas eliminar este video?')) {
-        const res = await deleteVideoRequest(id);
+  const updateVideoMutation = useMutation({
+    mutationFn: ({ id, video }) => updateVideoRequest(id, video),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['videos']);
+    },
+  });
 
-        if (res.status === 204)
-          setVideos(videos.filter(video => video._id !== id));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getVideo = async id => {
-    try {
-      const res = await getVideoRequest(id);
-      return res.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const updateVideo = async (id, video) => {
-    try {
-      await updateVideoRequest(id, video);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const deleteVideoMutation = useMutation({
+    mutationFn: deleteVideoRequest,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['videos']);
+    },
+  });
 
   return (
     <videoContext.Provider
       value={{
         videos,
-        createVideo,
-        getVideos,
-        deleteVideo,
-        getVideo,
-        updateVideo,
+        isLoading,
+        error,
+        createVideo: createVideoMutation.mutate,
+        updateVideo: updateVideoMutation.mutate,
+        deleteVideo: deleteVideoMutation.mutate,
       }}
     >
       {children}

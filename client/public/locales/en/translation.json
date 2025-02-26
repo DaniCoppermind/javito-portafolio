@@ -5,7 +5,8 @@
       "line2": "English Test"
     },
     "subtitle": "This a test in english for i18next",
-    "button": "View Portfolio"
+    "button": "View Portfolio",
+    "noVideos": "No Videos to show"
   },
   "portfolio": "Portfolio",
   "about": "About",
