@@ -10,3 +10,6 @@ export const updateVideoRequest = (id, video) =>
   axios.put(`/videos/${id}`, video);
 
 export const deleteVideoRequest = id => axios.delete(`/videos/${id}`);
+
+export const getVideosByLanguageRequest = language =>
+  axios.get(`/videos/language/${language}`);

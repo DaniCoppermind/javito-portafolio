@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 
-import LoginPage from './pages/LoginPage';
-import HomePage from './pages/HomePage';
-import PortfolioPage from './pages/PortfolioPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import DashboardPage from './pages/DashboardPage';
-import VideoFormPage from './pages/VideoFormPage';
+import LoginPage from './pages/Dashboard/LoginPage';
+import HomePage from './pages/Portfolio/HomePage';
+import PortfolioPage from './pages/Portfolio/PortfolioPage';
+import AboutPage from './pages/Portfolio/AboutPage';
+import ContactPage from './pages/Portfolio/ContactPage';
+import DashboardPage from './pages/Dashboard/DashboardPage';
+import VideoFormPage from './pages/Dashboard/VideoFormPage';
 import { ProtectedRoute, ProtectedLoginRoute } from './routes';
-import VideosPage from './pages/VideosPage';
+import VideosPage from './pages/Dashboard/VideosPage';
 import { VideoProvider } from './context/VideoContext';
 import Navbar from './components/Navbar';
 
@@ -38,10 +38,10 @@ function App() {
             </Route>
 
             <Route element={<ProtectedRoute />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/videos" element={<VideosPage />} />
               <Route path="/add-video" element={<VideoFormPage />} />
               <Route path="/videos/:id" element={<VideoFormPage />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
             </Route>
           </Routes>
         </BrowserRouter>

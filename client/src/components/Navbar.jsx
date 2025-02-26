@@ -96,13 +96,13 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link className="hover:text-secondary-orange" to={`/add-video`}>
-                Add Video
+              <Link className="hover:text-secondary-orange" to={`/videos`}>
+                Videos
               </Link>
             </li>
             <li>
-              <Link className="hover:text-secondary-orange" to={`/videos`}>
-                Videos
+              <Link className="hover:text-secondary-orange" to={`/add-video`}>
+                Add Video
               </Link>
             </li>
             <li>

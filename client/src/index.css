@@ -26,21 +26,19 @@ body {
   color: white;
 }
 
-.video-container {
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.video-card {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: black;
 }
 
-.video-container.vertical .video {
+.video-card iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 300px;
-  height: auto;
-}
-
-.video-container.horizontal .video {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
+  height: 100%;
 }

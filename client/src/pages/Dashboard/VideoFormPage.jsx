@@ -1,34 +1,37 @@
 import { useForm } from 'react-hook-form';
-import { useVideo } from '../context/VideoContext';
+import { useVideo } from '../../context/VideoContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useVideoQuery } from '../../hooks/useVideoQuery';
 import { useEffect } from 'react';
 
 function VideoFormPage() {
   const { register, handleSubmit, setValue } = useForm();
-  const { createVideo, getVideo, updateVideo } = useVideo();
+  const { createVideo, updateVideo } = useVideo();
   const navigate = useNavigate();
-  const params = useParams();
+  const { id } = useParams();
+
+  const { data: video, isLoading } = useVideoQuery(id);
 
   useEffect(() => {
-    async function loadVideo() {
-      if (params.id) {
-        const video = await getVideo(params.id);
-        setValue('url', video.url);
-        setValue('orientation', video.orientation);
-        setValue('language', video.language);
-      }
+    if (video) {
+      setValue('url', video.url);
+      setValue('orientation', video.orientation);
+      setValue('language', video.language);
     }
-    loadVideo();
-  }, [params.id, getVideo, setValue]);
+  }, [video, setValue]);
 
   const onSubmit = data => {
-    if (params.id) {
-      updateVideo(params.id, data);
+    if (id) {
+      updateVideo({ id, video: data });
     } else {
       createVideo(data);
     }
     navigate('/videos');
   };
+
+  if (isLoading) {
+    return <p>Cargando...</p>;
+  }
 
   return (
     <div className="w-full max-w-md rounded-md bg-zinc-800 p-10">
@@ -69,5 +72,3 @@ function VideoFormPage() {
 }
 
 export default VideoFormPage;
-
-// url, tipo de video, idioma
