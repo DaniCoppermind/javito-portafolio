@@ -1,5 +1,5 @@
-import { useVideo } from '../context/VideoContext';
-import VideoDashboardCard from '../components/VideoDashboardCard';
+import { useVideo } from '../../context/VideoContext';
+import CardVideo from '../../components/Dashboard/CardVideo';
 
 const VideosPage = () => {
   const { videos, isLoading, error } = useVideo();
@@ -10,7 +10,7 @@ const VideosPage = () => {
   return (
     <div>
       {videos.map(video => (
-        <VideoDashboardCard key={video._id} video={video} />
+        <CardVideo key={video._id} video={video} />
       ))}
     </div>
     // <div>

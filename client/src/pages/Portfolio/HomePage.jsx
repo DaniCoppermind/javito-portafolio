@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { useVideosByLanguage } from '../hooks/useVideosByLanguage';
-import VideoCard from '../components/VideoCard';
+import { useVideosByLanguage } from '../../hooks/useVideosByLanguage';
+import CardVideo from '../../components/Portfolio/CardVideo';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -24,9 +24,9 @@ const HomePage = () => {
     },
   };
 
-  const featuredVideos =
-    videos?.filter(video => video.orientation === 'horizontal').slice(0, 3) ||
-    [];
+  const featuredVideos = videos
+    ?.filter(video => video.orientation === 'horizontal')
+    .slice(0, 3);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading videos</div>;
@@ -68,10 +68,10 @@ const HomePage = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3"
+          className={`my-20 grid grid-cols-1 gap-8 sm:grid-cols-2 ${featuredVideos.length === 1 ? 'm-auto justify-center md:w-2/4 md:grid-cols-1' : featuredVideos.length < 3 ? `md:grid-cols-${featuredVideos.length}` : 'md:grid-cols-3'}`}
         >
           {featuredVideos.map(video => (
-            <VideoCard key={video._id} id={video._id} url={video.url} />
+            <CardVideo key={video._id} url={video.url} />
           ))}
         </motion.section>
       )}

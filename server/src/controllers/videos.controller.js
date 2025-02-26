@@ -55,10 +55,10 @@ export const deleteVideo = async (req, res) => {
 
 export const updateVideo = async (req, res) => {
   try {
-    const { url, orientation } = req.body
+    const { url, orientation, language } = req.body
     const updatedVideo = await Video.findByIdAndUpdate(
       req.params.id,
-      { url, orientation },
+      { url, orientation, language },
       { new: true }
     )
     if (!updatedVideo)

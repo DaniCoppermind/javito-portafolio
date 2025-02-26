@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useVideo } from '../context/VideoContext';
+import { useVideo } from '../../context/VideoContext';
 
-const VideoDashboardCard = ({ video }) => {
+const CardVideo = ({ video }) => {
   const { orientation, url, language, _id: id } = video;
   const { deleteVideo } = useVideo();
 
@@ -62,4 +62,4 @@ const VideoDashboardCard = ({ video }) => {
   );
 };
 
-export default VideoDashboardCard;
+export default CardVideo;
