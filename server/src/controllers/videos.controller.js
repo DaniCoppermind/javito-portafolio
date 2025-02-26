@@ -1,5 +1,22 @@
 import { Video } from '../models/video.model.js'
 
+export const getVideosByLanguage = async (req, res) => {
+  try {
+    const { language } = req.params
+
+    if (!['en', 'es'].includes(language)) {
+      return res
+        .status(400)
+        .json({ message: 'Language Invalid as a Parameter' })
+    }
+
+    const videos = await Video.find({ language })
+    res.json(videos)
+  } catch (error) {
+    return res.status(500).json({ message: error.message })
+  }
+}
+
 export const getVideos = async (req, res) => {
   try {
     const videos = await Video.find()

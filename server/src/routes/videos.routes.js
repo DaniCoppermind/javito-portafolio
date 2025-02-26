@@ -5,6 +5,7 @@ import {
   getVideo,
   getVideos,
   updateVideo,
+  getVideosByLanguage,
 } from '../controllers/videos.controller.js'
 import { auth } from '../middlewares/auth.middleware.js'
 import { validateSchema } from '../middlewares/validator.middleware.js'
@@ -15,6 +16,8 @@ const router = Router()
 router.get('/videos', getVideos)
 
 router.get('/videos/:id', getVideo)
+
+router.get('/videos/language/:language', getVideosByLanguage)
 
 // Management only for ADMIN
 router.post('/videos', auth, validateSchema(createVideoSchema), createVideo)
