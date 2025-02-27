@@ -12,6 +12,7 @@ import { ProtectedRoute, ProtectedLoginRoute } from './routes';
 import VideosPage from './pages/Dashboard/VideosPage';
 import { VideoProvider } from './context/VideoContext';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
               <Route path="/videos/:id" element={<VideoFormPage />} />
             </Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </VideoProvider>
     </AuthProvider>
