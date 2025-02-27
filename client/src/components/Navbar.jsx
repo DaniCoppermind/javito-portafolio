@@ -24,9 +24,9 @@ const Navbar = () => {
   const currentLang = location.pathname.startsWith('/es') ? 'es' : 'en';
 
   const navTabs = [
-    { name: t('portfolio'), path: `/${currentLang}/portfolio` },
-    { name: t('about'), path: `/${currentLang}/about` },
-    { name: t('contact'), path: `/${currentLang}/contact-me` },
+    { name: t('navbar.portfolio'), path: `/${currentLang}/portfolio` },
+    { name: t('navbar.about'), path: `/${currentLang}/about` },
+    { name: t('navbar.contact'), path: `/${currentLang}/contact-me` },
   ];
 
   return (
