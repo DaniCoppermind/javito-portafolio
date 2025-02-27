@@ -1,4 +1,9 @@
 {
+  "navbar": {
+    "portfolio": "Portafolio",
+    "about": "Sobre mi",
+    "contact": "Contactame"
+  },
   "home": {
     "title": {
       "line1": "Test,",
@@ -9,6 +14,12 @@
     "noVideos": "No hay videos"
   },
   "portfolio": "Portafolio",
-  "about": "Sobre mi",
+  "about": {
+    "title": "Hey, soy Javito 🎬",
+    "description": "Soy editor de videos y me especializo en contenido para redes sociales, sobre todo YouTube. Me apasiona la plataforma y siempre busco entender qué hace que un video funcione, atrapando al espectador y jugando a favor del algoritmo sin perder la esencia del contenido.",
+    "paragraph": "Me encanta el mundo audiovisual, y de ahí nace mi obsesión por darle ritmo a cada video para que cuente una historia. Ya sea para hacer reír, generar tensión o sorprender, mi trabajo es lograr que cada corte, sonido y transición sumen a la experiencia.",
+    "conclusion": "¡Si buscas un editor comprometido, que entienda el algoritmo y que realmente disfrute lo que hace, aquí estoy!",
+    "button": "¡Hablemos! 🚀"
+  },
   "contact": "Contactame"
 }
