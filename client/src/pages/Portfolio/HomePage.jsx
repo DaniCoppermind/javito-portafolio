@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { useVideosByLanguage } from '../../hooks/useVideosByLanguage';
-import CardVideo from '../../components/Portfolio/CardVideo';
+import { useVideosByLanguage } from '@hooks/useVideosByLanguage';
+import CardVideo from '@components/Portfolio/CardVideo';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -11,18 +11,6 @@ const HomePage = () => {
   const currentLang = location.pathname.startsWith('/es') ? 'es' : 'en';
 
   const { data: videos, isLoading, error } = useVideosByLanguage(currentLang);
-
-  const gradientAnimation = {
-    initial: { backgroundPosition: '0% 50%' },
-    animate: {
-      backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-      transition: {
-        duration: 5,
-        ease: 'linear',
-        repeat: Infinity,
-      },
-    },
-  };
 
   const featuredVideos = videos
     ?.filter(video => video.orientation === 'horizontal')
@@ -38,17 +26,16 @@ const HomePage = () => {
       transition={{ duration: 0.8 }}
       className="mt-6 text-center"
     >
-      <h2 className="mb-6 text-6xl font-bold italic">
+      <h1 className="mb-6 text-6xl font-bold italic">
         <motion.span
           initial="initial"
           animate="animate"
-          variants={gradientAnimation}
           className="from-secondary-green to-secondary-yellow inline-block bg-gradient-to-r bg-clip-text text-transparent"
         >
           {t('home.title.line1')}
         </motion.span>{' '}
         {t('home.title.line2')}
-      </h2>
+      </h1>
       <p className="mb-8 text-xl">{t('home.subtitle')}</p>
       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
         <Link
@@ -68,7 +55,7 @@ const HomePage = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className={`my-20 grid grid-cols-1 gap-8 sm:grid-cols-2 ${featuredVideos.length === 1 ? 'm-auto justify-center md:w-2/4 md:grid-cols-1' : featuredVideos.length < 3 ? `md:grid-cols-${featuredVideos.length}` : 'md:grid-cols-3'}`}
+          className={`my-20 grid grid-cols-1 gap-8 ${featuredVideos.length === 1 ? 'm-auto justify-center md:w-2/4 md:grid-cols-1' : featuredVideos.length < 3 ? `md:grid-cols-${featuredVideos.length}` : 'md:grid-cols-3'}`}
         >
           {featuredVideos.map(video => (
             <CardVideo key={video._id} url={video.url} />

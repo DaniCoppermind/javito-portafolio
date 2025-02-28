@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
-import { useVideo } from '../../context/VideoContext';
+import { useVideo } from '@context/VideoContext';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useVideoQuery } from '../../hooks/useVideoQuery';
+import { useVideoQuery } from '@hooks/useVideoQuery';
 import { useEffect } from 'react';
 
 function VideoFormPage() {

@@ -1,4 +1,9 @@
 {
+  "navbar": {
+    "portfolio": "Portfolio",
+    "about": "About Me",
+    "contact": "Contact"
+  },
   "home": {
     "title": {
       "line1": "Test,",
@@ -9,6 +14,12 @@
     "noVideos": "No Videos to show"
   },
   "portfolio": "Portfolio",
-  "about": "About",
+  "about": {
+    "title": "Hey, I'm Javito! 🎬",
+    "description": "I'm a video editor specializing in content for social media, especially YouTube. I’m all about figuring out what makes a video click-keeping viewers hooked while working with the algorithm, not against it.",
+    "paragraph": "I’ve always been passionate about the audiovisual world, which is why I focus on giving every video the perfect pace to tell a story. Whether it's making people laugh, building tension, or delivering a surprise, my goal is to make every cut, sound, and transition count.",
+    "conclusion": "If you're looking for an editor who gets the algorithm and genuinely loves what they do!",
+    "button": "let’s talk! 🚀"
+  },
   "contact": "Contact"
 }

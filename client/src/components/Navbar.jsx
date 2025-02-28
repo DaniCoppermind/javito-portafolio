@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-
 import { Link, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '@context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import NavTabs from './NavTabs';
 
@@ -24,9 +23,9 @@ const Navbar = () => {
   const currentLang = location.pathname.startsWith('/es') ? 'es' : 'en';
 
   const navTabs = [
-    { name: t('portfolio'), path: `/${currentLang}/portfolio` },
-    { name: t('about'), path: `/${currentLang}/about` },
-    { name: t('contact'), path: `/${currentLang}/contact-me` },
+    { name: t('navbar.portfolio'), path: `/${currentLang}/portfolio` },
+    { name: t('navbar.about'), path: `/${currentLang}/about` },
+    { name: t('navbar.contact'), path: `/${currentLang}/contact-me` },
   ];
 
   return (
@@ -43,9 +42,10 @@ const Navbar = () => {
           onClick={() => setSelected('')}
         >
           <motion.img
-            src="/Logo.png"
+            src="/Logo.webp"
             alt="Logo Portfolio"
-            className="h-16"
+            width="92"
+            height="72"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.1, rotate: 10 }}
