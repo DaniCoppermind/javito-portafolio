@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useVideo } from '../../context/VideoContext';
+import { useVideo } from '@context/VideoContext';
 
 const CardVideo = ({ video }) => {
   const { orientation, url, language, _id: id } = video;

@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { FaFacebookF, FaInstagram, FaTwitter, FaDiscord } from 'react-icons/fa';
-import IconCard from '../../components/Dashboard/IconCard';
+import IconCard from '@components/Portfolio/IconCard';
+import SkillCard from '@components/Portfolio/SkillCard';
+import { skills } from '@data';
 
 const AboutPage = () => {
   const { t } = useTranslation();
@@ -17,16 +19,28 @@ const AboutPage = () => {
         {t('about.title')}
       </motion.h1>
       <motion.section className="flex flex-col items-center justify-center gap-6 md:gap-10 lg:flex-row">
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 0.7 }}
-          transition={{ delay: 0.4 }}
-          whileHover={{ opacity: 1 }}
-          className="max-w-xl space-y-4 text-left text-lg sm:text-xl md:text-left"
-        >
-          <p>{t('about.description')}</p>
-          <p>{t('about.paragraph')}</p>
-        </motion.div>
+        <div className="flex flex-col gap-2">
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 0.7 }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ opacity: 1 }}
+            className="mb-2 max-w-xl space-y-4 text-left text-lg sm:text-xl md:text-left"
+          >
+            <p>{t('about.description')}</p>
+            <p>{t('about.paragraph')}</p>
+          </motion.div>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ opacity: 1 }}
+          >
+            {skills.map(skill => (
+              <SkillCard key={skill.id} skill={skill} />
+            ))}
+          </motion.div>
+        </div>
         <motion.aside
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -37,7 +51,7 @@ const AboutPage = () => {
             <p>{t('about.conclusion')}</p>
           </div>
           <motion.button
-            className="rounded-full bg-[#F5E83D] px-6 py-2 text-base font-bold text-[#492B7A] shadow-lg sm:text-lg md:px-8 md:py-3 md:text-xl"
+            className="bg-secondary-yellow text-primary-purple cursor-pointer rounded-full px-6 py-2 text-base font-bold shadow-lg sm:text-lg md:px-8 md:py-3 md:text-xl"
             whileHover={{
               scale: 1.05,
               boxShadow: '0px 0px 8px rgb(245,232,61)',
@@ -52,8 +66,8 @@ const AboutPage = () => {
             transition={{ delay: 0.8 }}
             className="mt-6 flex flex-wrap justify-center gap-6 first:hidden sm:gap-10 md:gap-16 lg:gap-20"
           >
-            <IconCard icon={<FaFacebookF />} />
-            <IconCard icon={<FaTwitter />} />
+            <IconCard icon={<FaFacebookF />} link="https://www.facebook.com" />
+            <IconCard icon={<FaTwitter />} link="https://www.twitter.com" />
           </motion.div>
           <motion.div
             initial={{ y: -20, opacity: 0 }}
@@ -61,8 +75,8 @@ const AboutPage = () => {
             transition={{ delay: 1 }}
             className="flex flex-wrap justify-center gap-6 sm:gap-10 md:gap-16 lg:gap-20"
           >
-            <IconCard icon={<FaDiscord />} />
-            <IconCard icon={<FaInstagram />} />
+            <IconCard icon={<FaDiscord />} link="https://www.discord.com" />
+            <IconCard icon={<FaInstagram />} link="https://www.instagram.com" />
           </motion.div>
         </motion.aside>
       </motion.section>

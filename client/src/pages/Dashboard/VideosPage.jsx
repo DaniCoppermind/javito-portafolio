@@ -1,5 +1,5 @@
-import { useVideo } from '../../context/VideoContext';
-import CardVideo from '../../components/Dashboard/CardVideo';
+import { useVideo } from '@context/VideoContext';
+import CardVideo from '@components/Dashboard/CardVideo';
 
 const VideosPage = () => {
   const { videos, isLoading, error } = useVideo();

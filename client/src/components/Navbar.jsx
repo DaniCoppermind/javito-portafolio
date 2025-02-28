@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-
 import { Link, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '@context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import NavTabs from './NavTabs';
 
@@ -43,8 +42,10 @@ const Navbar = () => {
           onClick={() => setSelected('')}
         >
           <motion.img
-            src="/Logo.png"
+            src="/Logo.webp"
             alt="Logo Portfolio"
+            width="90"
+            height="64"
             className="h-16"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
