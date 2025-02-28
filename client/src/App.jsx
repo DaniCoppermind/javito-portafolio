@@ -45,7 +45,7 @@ function App() {
               <Route path="/videos/:id" element={<VideoFormPage />} />
             </Route>
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </BrowserRouter>
       </VideoProvider>
     </AuthProvider>

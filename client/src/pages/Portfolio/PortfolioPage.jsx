@@ -101,7 +101,7 @@ const PortfolioPage = () => {
           </Slider>
         </section>
 
-        <section>
+        {/* <section>
           <h2 className="mb-4 text-2xl font-semibold">Videos Verticales</h2>
           <Slider {...sliderSettings}>
             {verticalVideos.map(video => (
@@ -110,7 +110,7 @@ const PortfolioPage = () => {
               </div>
             ))}
           </Slider>
-        </section>
+        </section> */}
       </div>
     </motion.div>
   );

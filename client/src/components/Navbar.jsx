@@ -44,9 +44,8 @@ const Navbar = () => {
           <motion.img
             src="/Logo.webp"
             alt="Logo Portfolio"
-            width="90"
-            height="64"
-            className="h-16"
+            width="92"
+            height="72"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.1, rotate: 10 }}

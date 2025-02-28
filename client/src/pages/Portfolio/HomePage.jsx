@@ -55,14 +55,10 @@ const HomePage = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className={`my-20 grid grid-cols-1 gap-8 sm:grid-cols-2 ${featuredVideos.length === 1 ? 'm-auto justify-center md:w-2/4 md:grid-cols-1' : featuredVideos.length < 3 ? `md:grid-cols-${featuredVideos.length}` : 'md:grid-cols-3'}`}
+          className={`my-20 grid grid-cols-1 gap-8 ${featuredVideos.length === 1 ? 'm-auto justify-center md:w-2/4 md:grid-cols-1' : featuredVideos.length < 3 ? `md:grid-cols-${featuredVideos.length}` : 'md:grid-cols-3'}`}
         >
           {featuredVideos.map(video => (
-            <CardVideo
-              key={video._id}
-              url={video.url}
-              thumbnail={video.thumbnail}
-            />
+            <CardVideo key={video._id} url={video.url} />
           ))}
         </motion.section>
       )}
