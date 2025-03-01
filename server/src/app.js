@@ -15,7 +15,7 @@ app.use(compression())
 
 app.use(
   cors({
-    origin: 'https://javito-portafolio-frontend.onrender.com',
+    origin: 'https://javito-portafolio-frontend.onrender.com/',
     credentials: true,
   })
 )
