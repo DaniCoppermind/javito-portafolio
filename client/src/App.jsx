@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from '@context/AuthContext';
 import { VideoProvider } from '@context/VideoContext';
-import Navbar from '@components/Navbar';
+import Navbar from '@components/navbar/Navbar';
 import AppRoutes from './routes/AppRoutes';
 
 function App() {
