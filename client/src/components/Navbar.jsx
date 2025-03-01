@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '@context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import NavTabs from './NavTabs';
+import BurguerButton from './Portfolio/BurguerButton';
 
 const Navbar = () => {
   const { t } = useTranslation();
@@ -30,17 +31,13 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="sticky z-20 w-full"
+      className="px-4 py-6"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-        <Link
-          to={`/${currentLang}`}
-          className="flex items-center space-x-3"
-          onClick={() => setSelected('')}
-        >
+      <div className="flex max-w-screen-xl flex-wrap items-center justify-between">
+        <Link to={`/${currentLang}`} onClick={() => setSelected('')}>
           <motion.img
             src="/Logo.webp"
             alt="Logo Portfolio"
@@ -56,25 +53,20 @@ const Navbar = () => {
           />
         </Link>
         <span className="sr-only">Go to Homepage</span>
-        <button
-          onClick={toggleMenu}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm hover:bg-gray-100 focus:ring-1 focus:outline-none md:hidden dark:text-gray-400"
+        <div className="md:hidden" onClick={toggleMenu}>
+          <BurguerButton />
+        </div>
+
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{
+            height: isMenuOpen ? 'auto' : 0,
+            opacity: isMenuOpen ? 1 : 0,
+          }}
+          transition={{ duration: 0.5 }}
+          className={`w-full overflow-hidden md:block md:w-auto`}
         >
-          <span className="sr-only">Open Main Menu</span>
-          <svg
-            className="h-5 w-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path stroke="currentColor" d="M1 1h15M1 7h15M1 13h15" />
-          </svg>
-        </button>
-        <div
-          className={`w-full md:block md:w-auto ${isMenuOpen ? 'block' : 'hidden'}`}
-        >
-          <ul className="mt-4 flex flex-col rounded-lg p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0 rtl:space-x-reverse">
+          <motion.ul className="mt-4 flex flex-col rounded-lg p-4 font-medium shadow-lg md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0 md:shadow-none rtl:space-x-reverse">
             {navTabs.map(tab => (
               <NavTabs
                 text={tab.name}
@@ -84,8 +76,8 @@ const Navbar = () => {
                 key={tab.name}
               />
             ))}
-          </ul>
-        </div>
+          </motion.ul>
+        </motion.div>
       </div>
       {token === secretValue ? (
         isAuthenticated ? (
