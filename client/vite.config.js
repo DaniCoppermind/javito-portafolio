@@ -10,7 +10,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://javito-portafolio-backend.onrender.com/',
+        target: 'https://javito-portafolio-backend.onrender.com',
         changeOrigin: true,
       },
     },

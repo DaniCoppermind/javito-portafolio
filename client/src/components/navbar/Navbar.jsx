@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const { isAuthenticated, logout, token, secretValue } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selected, setSelected] = useState(navTabs[0]?.name || '');
+  const [selected, setSelected] = useState('');
 
   const handleClick = () => {
     logout();
