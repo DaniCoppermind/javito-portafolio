@@ -17,7 +17,8 @@ export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const token = Cookies.get('loginSecure');
+  const tokenName = import.meta.env.VITE_TOKEN_NAME;
+  const token = Cookies.get(tokenName);
   const secretValue = import.meta.env.VITE_SECRET_KEY;
 
   const signin = async user => {
