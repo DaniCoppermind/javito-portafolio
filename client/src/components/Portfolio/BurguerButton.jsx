@@ -29,12 +29,12 @@ const BurguerButton = () => {
         />
         <motion.span
           variants={BURGUER_VARIANTS.bottom}
-          className="absolute h-1 w-5 bg-white"
+          className="absolute h-1 w-10 bg-white"
           style={{
             x: '-50%',
             y: '50%',
             bottom: '35%',
-            left: 'calc(50% + 10px)',
+            left: '50%',
           }}
         />
       </motion.button>
