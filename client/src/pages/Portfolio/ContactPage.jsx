@@ -62,7 +62,7 @@ const ContactPage = () => {
               className="space-y-6"
             >
               <motion.div variants={itemVariants} className="text-center">
-                <h2 className="font-franklin mb-2 text-3xl font-bold text-gray-800">
+                <h2 className="mb-2 text-3xl font-bold text-gray-800">
                   Contáctame
                 </h2>
                 <p className="text-gray-600">
@@ -203,7 +203,7 @@ const ContactPage = () => {
             >
               <CheckCircle size={48} />
             </motion.div>
-            <h2 className="font-franklin mb-2 text-2xl font-bold text-gray-800">
+            <h2 className="mb-2 text-2xl font-bold text-gray-800">
               ¡Mensaje enviado!
             </h2>
             <p className="mb-6 text-gray-600">

@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useVideosByLanguage } from '@hooks/useVideosByLanguage';
 import CardVideo from '@components/Portfolio/CardVideo';
+import LoaderSkeleton from '@components/LoaderSkeleton';
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -16,7 +17,7 @@ const HomePage = () => {
     ?.filter(video => video.orientation === 'horizontal')
     .slice(0, 3);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoaderSkeleton />;
   if (error) return <div>Error loading videos</div>;
 
   return (

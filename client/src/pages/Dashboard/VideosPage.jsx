@@ -2,9 +2,8 @@ import { useVideo } from '@context/VideoContext';
 import CardVideo from '@components/Dashboard/CardVideo';
 
 const VideosPage = () => {
-  const { videos, isLoading, error } = useVideo();
+  const { videos, error } = useVideo();
 
-  if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading videos</div>;
 
   return (

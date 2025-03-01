@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute, ProtectedLoginRoute } from '../routes';
+import LoaderSkeleton from '@components/LoaderSkeleton';
 
 const HomePage = lazy(() => import('@pages/Portfolio/HomePage'));
 const PortfolioPage = lazy(() => import('@pages/Portfolio/PortfolioPage'));
@@ -13,7 +14,7 @@ const VideosPage = lazy(() => import('@pages/Dashboard/VideosPage'));
 
 const AppRoutes = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoaderSkeleton />}>
       <Routes>
         <Route path="/" element={<Navigate to="/en" replace />} />
         {/* Rutas en inglés */}
