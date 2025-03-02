@@ -7,7 +7,7 @@ const VideosPage = () => {
   if (error) return <div>Error loading videos</div>;
 
   return (
-    <div>
+    <div className="flex flex-wrap items-center justify-center">
       {videos.map(video => (
         <CardVideo key={video._id} video={video} />
       ))}

@@ -10,7 +10,7 @@ const CardVideo = ({ video }) => {
   };
 
   return (
-    <main className="m-2 flex flex-col flex-wrap items-start justify-center">
+    <div className="m-2">
       {orientation === 'horizontal' ? (
         <div className="m-4 flex flex-col items-center gap-2">
           <iframe
@@ -58,7 +58,7 @@ const CardVideo = ({ video }) => {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 };
 
