@@ -27,7 +27,7 @@ const HomePage = () => {
       transition={{ duration: 0.8 }}
       className="mt-6 text-center"
     >
-      <h1 className="mb-6 text-6xl font-bold italic">
+      <h1 className="mb-6 text-4xl font-bold italic">
         <motion.span
           initial="initial"
           animate="animate"

@@ -28,7 +28,6 @@ const ContactPage = () => {
     setIsSubmitted(true);
   };
 
-  // Animaciones para los elementos
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -89,7 +88,7 @@ const ContactPage = () => {
                         value={formState.name}
                         onChange={handleChange}
                         required
-                        className="w-full rounded-lg border border-gray-300 bg-white py-3 pr-4 pl-10 text-gray-800 shadow-sm transition-all focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none"
+                        className="focus:border-primary-purple w-full rounded-lg border border-gray-300 bg-white py-3 pr-4 pl-10 text-gray-800 shadow-sm transition-all focus:ring-2 focus:ring-purple-200 focus:outline-none"
                         placeholder="Tu nombre completo"
                       />
                     </div>
@@ -112,7 +111,7 @@ const ContactPage = () => {
                         value={formState.email}
                         onChange={handleChange}
                         required
-                        className="w-full rounded-lg border border-gray-300 bg-white py-3 pr-4 pl-10 text-gray-800 shadow-sm transition-all focus:border-purple-500 focus:ring-2 focus:ring-purple-200 focus:outline-none"
+                        className="focus:border-primary-purple w-full rounded-lg border border-gray-300 bg-white py-3 pr-4 pl-10 text-gray-800 shadow-sm transition-all focus:ring-2 focus:ring-purple-200 focus:outline-none"
                         placeholder="correo@ejemplo.com"
                       />
                     </div>

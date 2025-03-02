@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 const VideoCard = ({ title, thumbnailUrl }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
-    className="overflow-hidden rounded-lg bg-purple-700 shadow-lg"
+    className="overflow-hidden rounded-lg shadow-lg"
   >
     <img
       src={thumbnailUrl || '/placeholder.svg'}
@@ -35,24 +35,6 @@ const PortfolioPage = () => {
       id: 3,
       title: 'Video Horizontal 3',
       thumbnailUrl: '/placeholder.svg?height=720&width=1280',
-    },
-  ];
-
-  const verticalVideos = [
-    {
-      id: 4,
-      title: 'Video Vertical 1',
-      thumbnailUrl: '/placeholder.svg?height=1280&width=720',
-    },
-    {
-      id: 5,
-      title: 'Video Vertical 2',
-      thumbnailUrl: '/placeholder.svg?height=1280&width=720',
-    },
-    {
-      id: 6,
-      title: 'Video Vertical 3',
-      thumbnailUrl: '/placeholder.svg?height=1280&width=720',
     },
   ];
 
