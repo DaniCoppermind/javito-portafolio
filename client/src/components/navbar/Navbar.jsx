@@ -35,7 +35,7 @@ const Navbar = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      <div className="flex max-w-screen-md flex-wrap items-center justify-between">
+      <div className="flex max-w-screen-md flex-wrap items-center justify-between md:max-w-screen">
         <Link to={`/${currentLang}`} onClick={() => setSelected('')}>
           <motion.img
             src="/Logo.webp"
