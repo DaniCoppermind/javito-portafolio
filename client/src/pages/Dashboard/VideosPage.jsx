@@ -6,23 +6,25 @@ const VideosPage = () => {
 
   if (error) return <div>Error loading videos</div>;
 
+  const horizontalVideos = videos.filter(
+    video => video.orientation === 'horizontal'
+  );
+  const verticalVideos = videos.filter(
+    video => video.orientation === 'vertical'
+  );
   return (
-    <div className="flex flex-wrap items-center justify-center">
-      {videos.map(video => (
-        <CardVideo key={video._id} video={video} />
-      ))}
+    <div className="grid grid-cols-2">
+      <div className="flex flex-wrap">
+        {horizontalVideos.map(video => (
+          <CardVideo key={video._id} video={video} />
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-5">
+        {verticalVideos.map(video => (
+          <CardVideo key={video._id} video={video} />
+        ))}
+      </div>
     </div>
-    // <div>
-    //   {videos.map(video => (
-    //     <div key={video._id} className="video-wrapper">
-    //       {video.orientation === 'horizontal' ? (
-    //         <HorizontalVideo url={video.url} id={video._id} />
-    //       ) : (
-    //         <VerticalVideo url={video.url} id={video._id} />
-    //       )}
-    //     </div>
-    //   ))}
-    // </div>
   );
 };
 

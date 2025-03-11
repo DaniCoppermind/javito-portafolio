@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useVideo } from '@context/VideoContext';
 
 const CardVideo = ({ video }) => {
-  const { orientation, url, language, _id: id } = video;
+  const { orientation, url, _id: id } = video;
   const { deleteVideo } = useVideo();
 
   const handleDelete = () => {
@@ -10,15 +10,10 @@ const CardVideo = ({ video }) => {
   };
 
   return (
-    <div className="m-2">
+    <div>
       {orientation === 'horizontal' ? (
         <div className="m-4 flex flex-col items-center gap-2">
-          <iframe
-            className="border-0"
-            src={url}
-            allowFullScreen
-            allow="autoplay; encrypted-media"
-          ></iframe>
+          <iframe height={250} src={url} allowFullScreen></iframe>
           <div className="flex gap-5">
             <button
               onClick={handleDelete}
@@ -35,13 +30,12 @@ const CardVideo = ({ video }) => {
           </div>
         </div>
       ) : (
-        <div className="m-4 flex flex-col items-center gap-2">
-          <iframe
-            className="border-0"
-            src={url}
-            allowFullScreen
-            allow="autoplay; encrypted-media"
-          ></iframe>
+        <div className="flex flex-col items-center gap-2">
+          <div className="article">
+            <div className="aspect-box">
+              <iframe className="border-0" src={url} allowFullScreen></iframe>
+            </div>
+          </div>
           <div className="flex gap-5">
             <button
               onClick={handleDelete}

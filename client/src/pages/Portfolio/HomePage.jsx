@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useVideosByLanguage } from '@hooks/useVideosByLanguage';
 import CardVideo from '@components/Portfolio/CardVideo';
-import LoaderSkeleton from '@components/LoaderSkeleton';
+import LoaderSkeleton from '@components/skeleton/LoaderSkeleton';
 
 const HomePage = () => {
   const { t } = useTranslation();

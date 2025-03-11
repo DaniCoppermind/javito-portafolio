@@ -34,7 +34,7 @@ function VideoFormPage() {
   }
 
   return (
-    <div className="w-full max-w-md rounded-md bg-zinc-800 p-10">
+    <div className="m-auto flex w-full max-w-md flex-col gap-5 rounded-md bg-zinc-800 p-10">
       <h1>Agregar Videos</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -65,7 +65,12 @@ function VideoFormPage() {
             <option value="es">Español</option>
           </select>
         </div>
-        <button type="submit">Enviar</button>
+        <button
+          className="bg-primary-purple my-2 w-full cursor-pointer rounded-md px-1 py-2 hover:bg-purple-700"
+          type="submit"
+        >
+          Enviar
+        </button>
       </form>
     </div>
   );

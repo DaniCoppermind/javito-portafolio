@@ -2,41 +2,28 @@ import { motion } from 'framer-motion';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { useVideo } from '@context/VideoContext';
 
-const VideoCard = ({ title, thumbnailUrl }) => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="overflow-hidden rounded-lg shadow-lg"
-  >
-    <img
-      src={thumbnailUrl || '/placeholder.svg'}
-      alt={title}
-      className="h-48 w-full object-cover"
-    />
-    <div className="p-4">
-      <h3 className="text-lg font-semibold text-white">{title}</h3>
-    </div>
-  </motion.div>
-);
+const VideoCard = ({ video }) =>
+  video.orientation === 'horizontal' ? (
+    <motion.div whileHover={{ scale: 1.05 }} className="overflow-hidden">
+      <iframe src={video.url} className="h-52 w-full" />
+    </motion.div>
+  ) : (
+    <motion.div whileHover={{ scale: 1.05 }} className="overflow-hidden">
+      <iframe src={video.url} className="h-100 w-full"></iframe>
+    </motion.div>
+  );
 
 const PortfolioPage = () => {
-  const horizontalVideos = [
-    {
-      id: 1,
-      title: 'Video Horizontal 1',
-      thumbnailUrl: '/placeholder.svg?height=720&width=1280',
-    },
-    {
-      id: 2,
-      title: 'Video Horizontal 2',
-      thumbnailUrl: '/placeholder.svg?height=720&width=1280',
-    },
-    {
-      id: 3,
-      title: 'Video Horizontal 3',
-      thumbnailUrl: '/placeholder.svg?height=720&width=1280',
-    },
-  ];
+  const { videos } = useVideo();
+
+  const horizontalVideos = videos.filter(
+    video => video.orientation === 'horizontal'
+  );
+  const verticalVideos = videos.filter(
+    video => video.orientation === 'vertical'
+  );
 
   const sliderSettings = {
     dots: true,
@@ -76,23 +63,23 @@ const PortfolioPage = () => {
           <h2 className="mb-4 text-2xl font-semibold">Videos Horizontales</h2>
           <Slider {...sliderSettings}>
             {horizontalVideos.map(video => (
-              <div key={video.id} className="px-2">
-                <VideoCard {...video} />
+              <div key={video._id} className="px-2">
+                <VideoCard video={video} />
               </div>
             ))}
           </Slider>
         </section>
 
-        {/* <section>
+        <section>
           <h2 className="mb-4 text-2xl font-semibold">Videos Verticales</h2>
           <Slider {...sliderSettings}>
             {verticalVideos.map(video => (
-              <div key={video.id} className="px-2">
-                <VideoCard {...video} />
+              <div key={video._id}>
+                <VideoCard video={video} />
               </div>
             ))}
           </Slider>
-        </section> */}
+        </section>
       </div>
     </motion.div>
   );
